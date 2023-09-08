@@ -66,8 +66,11 @@
             </span>
         </span>
     </button>
-    <RenderLess :isToggled="isToggled" @toggle-switch="toggleSwitch" v-slot="message">
+    <!-- <RenderLess :isToggled="isToggled" @toggle-switch="toggleSwitch" v-slot="message">
         {{ message.message }}
+    </RenderLess> -->
+    <RenderLess :isToggled="isToggled">
+        {{ isToggled ? '1 on open male empty ' : '0 off closed female full ' }}
     </RenderLess>
 </template>
 
@@ -86,6 +89,7 @@ const isToggled = ref(props.accept);
 
 const toggleSwitch = () => {
     isToggled.value = !isToggled.value;
+
 }
 </script>
 

@@ -1,18 +1,12 @@
 <template >
     <template v-if="isToggled">
-        <slot @click="()=>console.log('111111111111111111111')" message='1 ' />
-        <slot message='off ' />
-        <slot message='closed ' />
-        <slot message='female ' />
-        <slot message='full ' />
+        <slot />
+
 
     </template>
     <template v-else>
-        <slot message='0 ' />
-        <slot message='on ' />
-        <slot message='open ' />
-        <slot message='male ' />
-        <slot message='empty ' />
+        <slot />
+
     </template>
 </template>
 
