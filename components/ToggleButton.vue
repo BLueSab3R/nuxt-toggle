@@ -5,7 +5,7 @@
     </div>
 
     <RenderLess :isToggled="isToggled">
-        {{ isToggled ? '1 on open male empty ' : '0 off closed female full ' }}
+        {{ props.accept ? '1 on open male empty ' : '0 off closed female full ' }}
     </RenderLess>
 </template>
 
@@ -29,7 +29,6 @@ const checkToggle = () => {
     } else {
         emits('turnOff');
     }
-    isToggled.value = !isToggled.value;
 }
 
 </script>

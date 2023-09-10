@@ -8,7 +8,7 @@
                 <option value="icon">Toggle with icon</option>
             </select>
         </div>
-        <ToggleButton @turn-on="turnOn" @turn-off = 'turnOff' :type="type" :accept="accept">
+        <ToggleButton @turn-on="turnOn" @turn-off='turnOff' :type="type" :accept="accept">
             <template v-if="type === 'simple'">
                 <button type="button" :class="{
                     'bg-gray-200': !accept,
@@ -81,14 +81,14 @@
   
 <script setup>
 const type = ref(null);
-let accept = false;
+const accept = ref(false);
 const turnOn = () => {
-    accept = !accept;
+    accept.value = !accept.value;
     console.log(accept);
 }
 
 const turnOff = () => {
-    accept = !accept;
+    accept.value = !accept.value;
     console.log(accept);
 }
 
