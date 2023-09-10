@@ -8,53 +8,53 @@
                 <option value="icon">Toggle with icon</option>
             </select>
         </div>
-        <ToggleButton side-effects="sideEffects" :type="type" :accept="false">
+        <ToggleButton @turn-on="turnOn" @turn-off = 'turnOff' :type="type" :accept="accept">
             <template v-if="type === 'simple'">
                 <button type="button" :class="{
-                    'bg-gray-200': !isToggled,
-                    'bg-indigo-600': isToggled,
+                    'bg-gray-200': !accept,
+                    'bg-indigo-600': accept,
                 }"
                     class="mt-5 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
-                    role="switch" :aria-checked="!isToggled ? 'false' : 'true'">
+                    role="switch" :aria-checked="!accept ? 'false' : 'true'">
                     <span class="sr-only">Use setting</span>
                     <span aria-hidden="true" :class="{
-                        'translate-x-0': !isToggled,
-                        'translate-x-5': isToggled,
+                        'translate-x-0': !accept,
+                        'translate-x-5': accept,
                     }"
                         class='pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'>
                     </span>
 
                 </button>
             </template>
-            <template v-if="type === 'short '">
+            <template v-if="type === 'short'">
                 <button type="button"
                     class="mt-5 group relative inline-flex h-5 w-10 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
                     role="switch" aria-checked="false">
                     <span class="sr-only">Use setting</span>
                     <span aria-hidden="true" class="pointer-events-none absolute h-full w-full rounded-md bg-white"></span>
-                    <span aria-hidden="true" :class="{ 'bg-gray-200': !isToggled, 'bg-indigo-600': isToggled }"
+                    <span aria-hidden="true" :class="{ 'bg-gray-200': !accept, 'bg-indigo-600': accept }"
                         class="pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out"></span>
                     <span aria-hidden="true" :class="{
-                        'translate-x-0': !isToggled,
-                        'translate-x-5': isToggled,
+                        'translate-x-0': !accept,
+                        'translate-x-5': accept,
                     }"
                         class="pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out"></span>
 
                 </button>
             </template>
             <template v-if="type === 'icon'">
-                <button type="button" :class="{ 'bg-gray-200': !isToggled, 'bg-indigo-600': isToggled }"
+                <button type="button" :class="{ 'bg-gray-200': !accept, 'bg-indigo-600': accept }"
                     class="mt-5 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
                     role="switch" aria-checked="false">
                     <span class="sr-only">Use setting</span>
                     <span :class="{
-                        'translate-x-0': !isToggled,
-                        'translate-x-5': isToggled,
+                        'translate-x-0': !accept,
+                        'translate-x-5': accept,
                     }" class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0
               transition duration-200 ease-in-out">
                         <span :class="{
-                            'opacity-100 duration-200 ease-in': !isToggled,
-                            'opacity-100 duration-100 ease-out': isToggled,
+                            'opacity-100 duration-200 ease-in': !accept,
+                            'opacity-100 duration-100 ease-out': accept,
                         }"
                             class="opacity-100 duration-200 ease-in absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
                             aria-hidden="true">
@@ -81,24 +81,36 @@
   
 <script setup>
 const type = ref(null);
+let accept = false;
+const turnOn = () => {
+    accept = !accept;
+    console.log(accept);
+}
 
-const sideEffects = {
-    turnOn() {
-        console.log('Turn on');
-    },
-    turnOff() {
-        console.log('Turn off');
-    }
-};
+const turnOff = () => {
+    accept = !accept;
+    console.log(accept);
+}
 
 const optionHandler = (event) => {
     type.value = event.target.value;
 }
+
 </script>
 
 
 
-
+<!-- // const sideEffects = {
+    // @turn-of="turnOff"
+//     turnOn() {
+//         accept = !accept;
+//         console.log('Turn on');
+//     },
+//     turnOff() {
+//         accept = !accept;
+//         console.log('Turn off');
+//     }
+// }; -->
 
 <!-- <ul>
             <li>

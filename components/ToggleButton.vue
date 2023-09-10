@@ -1,6 +1,6 @@
 
 <template>
-    <div>
+    <div @click="checkToggle">
         <slot></slot>
     </div>
 
@@ -11,6 +11,7 @@
 
 <script setup>
 import RenderLess from './RenderLess.vue';
+const emits = defineEmits(['turnOn', 'turnOff'])
 const props = defineProps({
     accept: {
         type: Boolean
@@ -22,10 +23,14 @@ const props = defineProps({
 });
 
 const isToggled = ref(props.accept);
-
-const toggleSwitch = () => {
+const checkToggle = () => {
+    if (isToggled.value === true) {
+        emits('turnOn');
+    } else {
+        emits('turnOff');
+    }
     isToggled.value = !isToggled.value;
-
 }
+
 </script>
 
