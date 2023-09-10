@@ -1,12 +1,9 @@
 <template >
     <template v-if="isToggled">
         <slot />
-
-
     </template>
     <template v-else>
         <slot />
-
     </template>
 </template>
 
