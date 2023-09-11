@@ -1,5 +1,5 @@
 <template >
-    <template v-if="isToggled">
+    <template v-if="props.accept">
         <slot />
 
 
@@ -11,15 +11,14 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['toggleSwitch'])
 const props = defineProps({
-    isToggled: {
+    accept: {
         type: Boolean
     }
 
 });
-watch(() => props.isToggled, (newValue) => {
-    console.log('Змінено isToggled у RenderLess', newValue);
+watch(() => props.accept, (newValue) => {
+    console.log('Змінено props.accept у RenderLess', newValue);
 });
 
 </script>

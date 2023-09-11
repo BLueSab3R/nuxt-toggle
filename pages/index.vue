@@ -84,12 +84,10 @@ const type = ref(null);
 const accept = ref(false);
 const turnOn = () => {
     accept.value = !accept.value;
-    console.log(accept);
 }
 
 const turnOff = () => {
     accept.value = !accept.value;
-    console.log(accept);
 }
 
 const optionHandler = (event) => {

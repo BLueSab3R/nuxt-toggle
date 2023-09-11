@@ -4,7 +4,7 @@
         <slot></slot>
     </div>
 
-    <RenderLess :isToggled="isToggled">
+    <RenderLess :accept="props.accept">
         {{ props.accept ? '1 on open male empty ' : '0 off closed female full ' }}
     </RenderLess>
 </template>
@@ -22,9 +22,8 @@ const props = defineProps({
 
 });
 
-const isToggled = ref(props.accept);
 const checkToggle = () => {
-    if (isToggled.value === true) {
+    if (props.accept.value === true) {
         emits('turnOn');
     } else {
         emits('turnOff');
@@ -33,3 +32,4 @@ const checkToggle = () => {
 
 </script>
 
+<!-- const isToggled = ref(props.accept); -->
