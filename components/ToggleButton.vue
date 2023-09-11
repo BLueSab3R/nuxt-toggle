@@ -22,14 +22,40 @@ const props = defineProps({
 
 });
 
-const checkToggle = () => {
+const checkToggle = async () => {
     if (props.accept.value === true) {
         emits('turnOn');
+        // try {
+        //     const response = await fetch('https://api.example.com/start-service');
+        //     console.log('Service started:', response.data);
+        // } catch (error) {
+        //     console.error('Error starting service:', error);
+        // }
     } else {
         emits('turnOff');
+        // try {
+        //     const response = await fetch('https://api.example.com/stop-service');
+        //     console.log('Service stopped:', response.data);
+        // } catch (error) {
+        //     console.error('Error stopping service:', error);
+        // }
     }
 }
 
 </script>
 
 <!-- const isToggled = ref(props.accept); -->
+
+<!-- const asyncOnRequest = async () => {
+    try {
+        const response = await fetch('https://api.github.com');
+        const data = await response.json();
+        console.log(data);
+        console.log('Async request:', data);
+    } catch (error) {
+        console.error('Error in request:', error);
+    }
+}
+const asyncOffRequest = async () => {
+    console.log('Async request off');
+} -->

@@ -8,11 +8,14 @@
                 <option value="icon">Toggle with icon</option>
             </select>
         </div>
-        <ToggleButton @turn-on="turnOn" @turn-off='turnOff' :type="type" :accept="accept">
+        <ToggleButton @turn-on="turnOn" @turn-off='turnOff' :counter='counter' :type="type" :accept="accept">
             <template v-if="type === 'simple'">
                 <button type="button" :class="{
-                    'bg-gray-200': !accept,
-                    'bg-indigo-600': accept,
+                    // 'bg-gray-200': !accept,
+                    'bg-red-600': counter === 0,
+                    'bg-yellow-200': counter === 1,
+                    'bg-green-600': counter === 2,
+                    // 'bg-indigo-600': accept,
                 }"
                     class="mt-5 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2"
                     role="switch" :aria-checked="!accept ? 'false' : 'true'">
@@ -82,11 +85,24 @@
 <script setup>
 const type = ref(null);
 const accept = ref(false);
+let counter = ref(0);
 const turnOn = () => {
+    if (counter.value >= 2) {
+        counter.value = 0;
+    } else {
+        counter.value++;
+
+    }
+
     accept.value = !accept.value;
 }
 
 const turnOff = () => {
+    if (counter.value >= 2) {
+        counter.value = 0;
+    } else {
+        counter.value++;
+    }
     accept.value = !accept.value;
 }
 
