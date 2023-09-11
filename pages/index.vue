@@ -99,23 +99,19 @@ const type = ref(null);
 const accept = ref(false);
 let counter = ref(0);
 const turnOn = () => {
-    if (counter.value >= 2) {
-        counter.value = 0;
-    } else {
-        counter.value++;
-
-    }
-
-    accept.value = !accept.value;
+    counter.value = 1;
+    setTimeout(() => {
+        counter.value = 2;
+        accept.value = true;
+    }, 1000)
 }
 
 const turnOff = () => {
-    if (counter.value >= 2) {
+    counter.value = 1;
+    setTimeout(() => {
         counter.value = 0;
-    } else {
-        counter.value++;
-    }
-    accept.value = !accept.value;
+        accept.value = false;
+    }, 1000)
 }
 
 const optionHandler = (event) => {

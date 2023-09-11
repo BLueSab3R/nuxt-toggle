@@ -23,8 +23,8 @@ const props = defineProps({
 });
 
 const checkToggle = async () => {
-    if (props.accept.value === true) {
-        emits('turnOn');
+    if (props.accept === true) {
+        emits('turnOff');
         try {
             const response = await fetch('https://api.example.com/start-service');
             console.log('Service started:', response.data);
@@ -32,7 +32,7 @@ const checkToggle = async () => {
             console.error('Error starting service:', error);
         }
     } else {
-        emits('turnOff');
+        emits('turnOn');
         try {
             const response = await fetch('https://api.example.com/stop-service');
             console.log('Service stopped:', response.data);
