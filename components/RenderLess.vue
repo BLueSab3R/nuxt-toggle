@@ -18,7 +18,7 @@ const props = defineProps({
 
 });
 watch(() => props.accept, (newValue) => {
-    console.log('Змінено props.accept у RenderLess', newValue);
+    console.log('Changed props.accept у RenderLess', newValue);
 });
 
 </script>
