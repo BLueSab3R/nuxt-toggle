@@ -24,7 +24,7 @@ const checkToggle = async () => {
         try {
             const response = await fetch('https://jsonplaceholder.typicode.com/comments');
             const data = await response.json()
-            console.log('Service started:', data);
+            console.log('Service stopped :', data);
         } catch (error) {
             console.error('Error starting service:', error);
         }
@@ -33,7 +33,7 @@ const checkToggle = async () => {
         try {
             const response = await fetch('https://dog.ceo/api/breeds/list/all');
             const data = await response.json();
-            console.log('Service stopped:', data);
+            console.log('Service started:', data);
         } catch (error) {
             console.error('Error stopping service:', error);
         }
