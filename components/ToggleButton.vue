@@ -37,7 +37,7 @@ const checkToggle = async () => {
         } catch (error) {
             console.error('Error stopping service:', error);
         }
-    }
+    }   
 }
 
 </script>
